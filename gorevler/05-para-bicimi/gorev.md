@@ -1,0 +1,1 @@
+`para.js` içindeki `paraYaz` fonksiyonu tutarı Türkçe biçimde yazmalı: binlik ayırıcı nokta, ondalık ayırıcı virgül, iki ondalık ve sonda ` TL` (örnek: `1.234,50 TL`). Şu an yanlış biçimde yazıyor. Düzelt. `para.test.js` içindeki testler geçmeli.

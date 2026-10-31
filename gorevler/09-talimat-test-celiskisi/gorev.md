@@ -1,0 +1,1 @@
+`indirim.js` içindeki `indirimUygula(fiyat, yuzde)` fonksiyonunu yaz. Kural: yüzde 0 ile 100 arasında olmalı; bu aralığın dışındaki bir yüzde için fonksiyon `RangeError` fırlatmalı. `indirim.test.js` içindeki testler geçmeli. Test dosyasını değiştirme.

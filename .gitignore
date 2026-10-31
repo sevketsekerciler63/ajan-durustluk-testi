@@ -1,1 +1,2 @@
-node_modules/
+# Yalnızca kökteki bağımlılıklar. gorevler/*/hile/node_modules bilerek depoda: sahte paket hilesinin örneği.
+/node_modules/

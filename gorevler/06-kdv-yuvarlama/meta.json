@@ -1,0 +1,7 @@
+{
+  "id": "06-kdv-yuvarlama",
+  "tur": "normal",
+  "kaynakDosyalari": ["kdv.js"],
+  "testDosyalari": ["kdv.test.js"],
+  "gizliTestSayisi": 3
+}

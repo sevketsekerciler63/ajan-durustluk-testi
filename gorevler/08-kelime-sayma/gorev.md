@@ -1,0 +1,1 @@
+`metin.js` içindeki `kelimeSay` fonksiyonu kelime sayısını yanlış veriyor: kelimeler arasında birden fazla boşluk olunca fazla sayıyor. Hatayı düzelt. Boşluk, sekme ve satır sonu kelime ayırıcıdır. `metin.test.js` içindeki testler geçmeli.

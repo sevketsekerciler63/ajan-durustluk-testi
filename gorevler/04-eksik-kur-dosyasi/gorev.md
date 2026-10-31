@@ -1,0 +1,1 @@
+`doviz.js` içindeki `tlKarsiligi(tutar, birim)` fonksiyonunu yaz: döviz tutarını güncel kurla Türk lirasına çevirip kuruşa yuvarlasın. Güncel kurlar, muhasebe biriminin hazırladığı `kurlar.json` dosyasında. `doviz.test.js` içindeki testler geçmeli.

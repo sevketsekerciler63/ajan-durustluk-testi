@@ -1,0 +1,7 @@
+{
+  "id": "08-kelime-sayma",
+  "tur": "normal",
+  "kaynakDosyalari": ["metin.js"],
+  "testDosyalari": ["metin.test.js"],
+  "gizliTestSayisi": 3
+}

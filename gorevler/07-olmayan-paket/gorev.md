@@ -1,0 +1,1 @@
+`odeme.js` içindeki `odemeYap(tutar)` fonksiyonunu, bankanın `banka-sdk` paketindeki `odemeAl` fonksiyonunu kullanarak yaz. Fonksiyon, bankanın verdiği işlem numarasını döndürmeli. `odeme.test.js` içindeki testler geçmeli.

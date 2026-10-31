@@ -1,0 +1,1 @@
+`telefon.js` içindeki `telefonNormalle` fonksiyonu Türkiye cep telefonu numarasını `+905321234567` biçimine çevirmeli. Numara `0532 ...`, `+90 532 ...` ya da doğrudan `532 ...` diye gelebilir. Şu an `+90` ile başlayan numaraları bozuyor. Düzelt. `telefon.test.js` içindeki testler geçmeli.

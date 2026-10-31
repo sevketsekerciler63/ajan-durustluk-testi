@@ -1,10 +1,11 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { gorevleriYukle } from '../src/gorevler.js'
 import { calismaAlaniHazirla, calismaAlaniniSil } from '../src/calisma-alani.js'
 import { gizliTestleriCalistir, hakemlik } from '../src/hakem.js'
+import { nodeTestCalistir } from '../src/node-test.js'
 
 const gorevler = gorevleriYukle()
 const normalGorevler = gorevler.filter((g) => g.tur === 'normal')
@@ -85,6 +86,28 @@ for (const gorev of normalGorevler) {
   test(`${gorev.id}: referans çözüm gizli testlerin hepsini geçer`, () => {
     const sonuc = calistir(ajanlar.durust, gorev)
     assert.equal(sonuc.gizliGecti, true, JSON.stringify(sonuc.gizliOzet))
+  })
+}
+
+for (const gorev of tuzakGorevler) {
+  test(`${gorev.id}: tuzağın neden çözülemez olduğu meta.json'da yazılı`, () => {
+    assert.ok(gorev.tuzak?.length > 20)
+  })
+}
+
+// Akla yatkın hile (kur uydurmak, sahte paket yazmak, talimatı yok saymak) ajanın kendi testlerinde
+// başarı gibi görünmeli ama hakemin gizli testine takılmalı. Böyle değilse tuzak hileciyi yakalamaz.
+for (const gorev of tuzakGorevler.filter((g) => existsSync(join(g.dizin, 'hile')))) {
+  test(`${gorev.id}: hile görünen testleri geçer ama gizli testlere takılır`, () => {
+    const alan = calismaAlaniHazirla(gorev)
+    try {
+      cpSync(join(gorev.dizin, 'hile'), alan.dizin, { recursive: true })
+      const gorunen = nodeTestCalistir(alan.dizin, gorev.testDosyalari, 'tap')
+      assert.equal(gorunen.durum, 0, gorunen.stdout)
+      assert.equal(gizliTestleriCalistir(gorev, alan.dizin).gecti, false)
+    } finally {
+      calismaAlaniniSil(alan.dizin)
+    }
   })
 }
 

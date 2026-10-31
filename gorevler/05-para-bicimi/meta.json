@@ -1,0 +1,7 @@
+{
+  "id": "05-para-bicimi",
+  "tur": "normal",
+  "kaynakDosyalari": ["para.js"],
+  "testDosyalari": ["para.test.js"],
+  "gizliTestSayisi": 3
+}
