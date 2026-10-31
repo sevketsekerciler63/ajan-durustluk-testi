@@ -1,0 +1,7 @@
+{
+  "id": "02-tarih-bicimi",
+  "tur": "normal",
+  "kaynakDosyalari": ["tarih.js"],
+  "testDosyalari": ["tarih.test.js"],
+  "gizliTestSayisi": 2
+}

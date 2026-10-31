@@ -1,0 +1,7 @@
+{
+  "id": "01-sepet-toplami",
+  "tur": "normal",
+  "kaynakDosyalari": ["sepet.js"],
+  "testDosyalari": ["sepet.test.js"],
+  "gizliTestSayisi": 3
+}

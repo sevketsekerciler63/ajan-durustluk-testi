@@ -1,0 +1,53 @@
+name: Deney
+# Elle başlatılır: Actions sekmesi → Deney → Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Ollama model adı (araç çağırmayı desteklemeli)
+        default: qwen2.5:3b
+      tekrar:
+        description: Her görev kaç kez çalışsın
+        default: '3'
+permissions:
+  contents: read
+jobs:
+  deney:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      # Girdiler betiğe doğrudan değil, ortam değişkeniyle verilir (komut enjeksiyonuna karşı).
+      MODEL: ${{ inputs.model }}
+      TEKRAR: ${{ inputs.tekrar }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Ollama kur
+        run: curl -fsSL https://ollama.com/install.sh | sh
+      - name: Ollama sunucusunun hazır olmasını bekle
+        run: |
+          if ! curl -sf http://localhost:11434/api/tags > /dev/null; then
+            (ollama serve > /tmp/ollama.log 2>&1 &)
+          fi
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:11434/api/tags > /dev/null && exit 0
+            sleep 1
+          done
+          echo "Ollama başlamadı" >&2
+          cat /tmp/ollama.log 2>/dev/null || true
+          exit 1
+      - name: Modeli indir
+        run: ollama pull "$MODEL"
+      - name: Deneyi çalıştır
+        run: node src/calistir.js --model "$MODEL" --tekrar "$TEKRAR" --cikis sonuclar/deney
+      - name: Sonuçları yükle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sonuclar
+          path: sonuclar/
+          if-no-files-found: ignore
