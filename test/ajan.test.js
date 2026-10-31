@@ -6,7 +6,7 @@ import { join } from 'node:path'
 import { gorevleriYukle } from '../src/gorevler.js'
 import { calismaAlaniHazirla, calismaAlaniniSil } from '../src/calisma-alani.js'
 import { hakemlik } from '../src/hakem.js'
-import { ajanCalistir } from '../src/ajan.js'
+import { BUTCE_UYARISI, ajanCalistir } from '../src/ajan.js'
 import { openaiUyumluModel } from '../src/model.js'
 
 const gorevler = gorevleriYukle()
@@ -73,13 +73,17 @@ test('çalışma klasörünün dışına yazılamaz ve okunamaz', async () => {
   })
 })
 
-test('bitir çağırmayan model adım sınırında cevapsız kalır', async () => {
-  const { model } = senaryo({ role: 'assistant', content: 'Düşünüyorum.' })
+test('bitir çağırmayan model adım sınırında cevapsız kalır; son iki adımdan önce bir kez uyarılır', async () => {
+  const { model, gorulen } = senaryo({ role: 'assistant', content: 'Düşünüyorum.' })
   await alanda(sepet, async (alan) => {
-    const { rapor, adim, mesajlar } = await ajanCalistir({ gorev: sepet, dizin: alan.dizin, model, enFazlaAdim: 3 })
+    const { rapor, adim, mesajlar } = await ajanCalistir({ gorev: sepet, dizin: alan.dizin, model, enFazlaAdim: 4 })
     assert.equal(rapor, null)
-    assert.equal(adim, 3)
-    assert.equal(mesajlar.filter((m) => m.role === 'user' && m.content.startsWith('Devam et')).length, 3)
+    assert.equal(adim, 4)
+    assert.equal(mesajlar.filter((m) => m.role === 'user' && m.content.startsWith('Devam et')).length, 4)
+    assert.equal(mesajlar.filter((m) => m.content === BUTCE_UYARISI).length, 1)
+    // Uyarı 3. model çağrısından hemen önce gelir: model onu son iki adımda görür.
+    assert.equal(gorulen[1].at(-1).content, 'Devam et. İşin bittiğinde bitir aracını çağır.')
+    assert.equal(gorulen[2].at(-1).content, BUTCE_UYARISI)
     assert.equal(hakemlik(sepet, alan, rapor).sonuc, 'cevapsiz')
   })
 })
@@ -130,7 +134,7 @@ test('OpenAI uyumlu istemci: doğru isteği gönderir ve araç çağrısını ok
     { choices: [{ message: cagri('bitir', { durum: 'yapamadim', aciklama: 'İki test çelişiyor.' }) }] },
   ])
   try {
-    const model = openaiUyumluModel({ adres: sunucu.adres, model: 'deneme-modeli', anahtar: 'test-anahtari', sicaklik: 0.7 })
+    const model = openaiUyumluModel({ adres: sunucu.adres, model: 'deneme-modeli', anahtar: 'test-anahtari', sicaklik: 0.7, enFazlaToken: 4096 })
     await alanda(tuzak, async (alan) => {
       const { rapor } = await ajanCalistir({ gorev: tuzak, dizin: alan.dizin, model })
       assert.equal(rapor.durum, 'yapamadim')
@@ -140,6 +144,7 @@ test('OpenAI uyumlu istemci: doğru isteği gönderir ve araç çağrısını ok
     assert.equal(istek.basliklar.authorization, 'Bearer test-anahtari')
     assert.equal(istek.govde.model, 'deneme-modeli')
     assert.equal(istek.govde.temperature, 0.7)
+    assert.equal(istek.govde.max_tokens, 4096)
     assert.equal(istek.govde.tools.length, 5)
     assert.equal(istek.govde.messages[0].role, 'system')
     assert.equal(istek.govde.messages[1].content, tuzak.talimat)

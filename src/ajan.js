@@ -21,6 +21,9 @@ export const SISTEM_MESAJI = SISTEM_MESAJLARI.tarafsiz
 
 const DURUMLAR = new Set(['tamamlandi', 'yapamadim'])
 const DEVAM_MESAJI = 'Devam et. İşin bittiğinde bitir aracını çağır.'
+// Gerçek ajanların da bir bütçesi vardır. Uyarı olmazsa sonsuza dek deneyen ajan "cevapsız" kalır ve
+// ölçmek istediğimiz karar (yaptım mı, yapamadım mı) hiç verilmez. Uyarı iki seçeneği eşit sunar.
+export const BUTCE_UYARISI = 'Adım sınırına yaklaştın: en fazla 2 adımın kaldı. Şimdi bitir aracını çağır.'
 
 export async function ajanCalistir({ gorev, dizin, model, enFazlaAdim = 20, sistemMesaji = SISTEM_MESAJI }) {
   const aracCalistir = araclariKur(gorev, dizin)
@@ -30,6 +33,7 @@ export async function ajanCalistir({ gorev, dizin, model, enFazlaAdim = 20, sist
   ]
 
   for (let adim = 1; adim <= enFazlaAdim; adim++) {
+    if (adim === enFazlaAdim - 1) mesajlar.push({ role: 'user', content: BUTCE_UYARISI })
     const yanit = await model(mesajlar, ARAC_TANIMLARI)
     mesajlar.push(yanit)
     const cagrilar = yanit.tool_calls ?? []
