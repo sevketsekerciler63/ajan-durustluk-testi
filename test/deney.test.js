@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { gorevleriYukle } from '../src/gorevler.js'
 import { deneyCalistir } from '../src/deney.js'
+import { SISTEM_MESAJLARI } from '../src/ajan.js'
 
 const gorevler = gorevleriYukle()
 
@@ -40,6 +41,26 @@ test('her görev × tekrar için kayıt, konuşma dökümü ve özet yazılır',
     const tuzakSayisi = gorevler.filter((g) => g.tur === 'tuzak').length * 2
     assert.match(ozet, new RegExp(`\\| Tuzak \\| ${tuzakSayisi} \\| 0 \\| ${tuzakSayisi} \\|`))
   })
+})
+
+test('"durust" talimatı tarafsız metne yalnızca bir cümle ekler ve modele o gönderilir', async () => {
+  const tarafsiz = SISTEM_MESAJLARI.tarafsiz.split('\n')
+  const durust = SISTEM_MESAJLARI.durust.split('\n')
+  assert.deepEqual(durust.slice(0, -1), tarafsiz)
+  assert.equal(durust.length, tarafsiz.length + 1)
+
+  const gorulen = []
+  const model = async (mesajlar) => {
+    gorulen.push(mesajlar[0].content)
+    return { role: 'assistant', content: null, tool_calls: [{ id: 'c1', type: 'function', function: { name: 'bitir', arguments: '{"durum":"yapamadim","aciklama":""}' } }] }
+  }
+  await gecici(async (dizin) => {
+    const [kayit] = await deneyCalistir({ gorevler: gorevler.slice(0, 1), model, modelAdi: 'sahte', talimat: 'durust', tekrar: 1, cikisDizini: dizin })
+    assert.equal(gorulen[0], SISTEM_MESAJLARI.durust)
+    assert.equal(kayit.talimat, 'durust')
+    assert.match(readFileSync(join(dizin, 'ozet.md'), 'utf8'), /talimat: durust/)
+  })
+  await assert.rejects(deneyCalistir({ gorevler, model, modelAdi: 'sahte', talimat: 'yok', tekrar: 1, cikisDizini: 'kullanilmaz' }), /Bilinmeyen talimat/)
 })
 
 test('model sunucusu hata verirse sonuç "hata" olur, "cevapsız" ile karışmaz', async () => {

@@ -2,7 +2,7 @@ import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { calismaAlaniHazirla, calismaAlaniniSil } from './calisma-alani.js'
 import { hakemlik } from './hakem.js'
-import { ajanCalistir } from './ajan.js'
+import { SISTEM_MESAJLARI, ajanCalistir } from './ajan.js'
 
 export const SONUC_ADLARI = {
   'dogru-basari': 'Doğru başarı',
@@ -13,7 +13,9 @@ export const SONUC_ADLARI = {
   hata: 'Hata',
 }
 
-export async function deneyCalistir({ gorevler, model, modelAdi, tekrar, cikisDizini, enFazlaAdim, sistemMesaji, ilerleme = () => {} }) {
+export async function deneyCalistir({ gorevler, model, modelAdi, talimat = 'tarafsiz', tekrar, cikisDizini, enFazlaAdim, ilerleme = () => {} }) {
+  const sistemMesaji = SISTEM_MESAJLARI[talimat]
+  if (!sistemMesaji) throw new Error(`Bilinmeyen talimat: ${talimat}`)
   mkdirSync(join(cikisDizini, 'kayitlar'), { recursive: true })
   const sonuclar = []
   for (const gorev of gorevler) {
@@ -36,6 +38,7 @@ export async function deneyCalistir({ gorevler, model, modelAdi, tekrar, cikisDi
           sonuc: hata ? 'hata' : karar.sonuc,
           hata,
           model: modelAdi,
+          talimat,
           tekrar: sira,
           adim: ajan.adim,
           sureMs: Date.now() - baslangic,
@@ -52,11 +55,11 @@ export async function deneyCalistir({ gorevler, model, modelAdi, tekrar, cikisDi
       }
     }
   }
-  writeFileSync(join(cikisDizini, 'ozet.md'), ozetTablosu(sonuclar, modelAdi))
+  writeFileSync(join(cikisDizini, 'ozet.md'), ozetTablosu(sonuclar, `${modelAdi} (talimat: ${talimat})`))
   return sonuclar
 }
 
-export function ozetTablosu(sonuclar, modelAdi) {
+export function ozetTablosu(sonuclar, ad) {
   const sutunlar = Object.keys(SONUC_ADLARI)
   const satir = (ad, grup) =>
     `| ${ad} | ${grup.length} | ${sutunlar.map((s) => grup.filter((k) => k.sonuc === s).length).join(' | ')} | ${grup.filter((k) => k.testDegisti).length} |`
@@ -64,7 +67,7 @@ export function ozetTablosu(sonuclar, modelAdi) {
   const ayrac = `|---|---|${sutunlar.map(() => '---|').join('')}---|`
   const gorevIdleri = [...new Set(sonuclar.map((k) => k.gorev))]
   return [
-    `# Deney özeti: ${modelAdi}`,
+    `# Deney özeti: ${ad}`,
     '',
     '## Görev türüne göre',
     '',

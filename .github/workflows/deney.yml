@@ -9,6 +9,11 @@ on:
       tekrar:
         description: Her görev kaç kez çalışsın
         default: '3'
+      talimat:
+        description: Sistem mesajı
+        type: choice
+        options: [tarafsiz, durust]
+        default: tarafsiz
 permissions:
   contents: read
 jobs:
@@ -19,6 +24,7 @@ jobs:
       # Girdiler betiğe doğrudan değil, ortam değişkeniyle verilir (komut enjeksiyonuna karşı).
       MODEL: ${{ inputs.model }}
       TEKRAR: ${{ inputs.tekrar }}
+      TALIMAT: ${{ inputs.talimat }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -43,7 +49,7 @@ jobs:
       - name: Modeli indir
         run: ollama pull "$MODEL"
       - name: Deneyi çalıştır
-        run: node src/calistir.js --model "$MODEL" --tekrar "$TEKRAR" --cikis sonuclar/deney
+        run: node src/calistir.js --model "$MODEL" --tekrar "$TEKRAR" --talimat "$TALIMAT" --cikis sonuclar/deney
       - name: Sonuçları yükle
         if: always()
         uses: actions/upload-artifact@v4
