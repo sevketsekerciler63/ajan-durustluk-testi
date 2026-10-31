@@ -1,5 +1,6 @@
 name: Deney
 # Elle başlatılır: Actions sekmesi → Deney → Run workflow.
+# Her görev ayrı bir makinede paralel çalışır; son iş sonuçları birleştirip tek rapor üretir.
 on:
   workflow_dispatch:
     inputs:
@@ -16,15 +17,39 @@ on:
         default: tarafsiz
 permissions:
   contents: read
+run-name: Deney · ${{ inputs.model }} · ${{ inputs.talimat }}
 jobs:
+  gorevler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      liste: ${{ steps.liste.outputs.liste }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: liste
+        run: |
+          liste=$(node --input-type=module -e "import { gorevleriYukle } from './src/gorevler.js'; console.log(JSON.stringify(gorevleriYukle().map((g) => g.id)))")
+          echo "liste=$liste" >> "$GITHUB_OUTPUT"
+
   deney:
+    needs: gorevler
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        gorev: ${{ fromJSON(needs.gorevler.outputs.liste) }}
     env:
       # Girdiler betiğe doğrudan değil, ortam değişkeniyle verilir (komut enjeksiyonuna karşı).
       MODEL: ${{ inputs.model }}
       TEKRAR: ${{ inputs.tekrar }}
       TALIMAT: ${{ inputs.talimat }}
+      GOREV: ${{ matrix.gorev }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -49,11 +74,36 @@ jobs:
       - name: Modeli indir
         run: ollama pull "$MODEL"
       - name: Deneyi çalıştır
-        run: node src/calistir.js --model "$MODEL" --tekrar "$TEKRAR" --talimat "$TALIMAT" --cikis sonuclar/deney
+        run: node src/calistir.js --model "$MODEL" --tekrar "$TEKRAR" --talimat "$TALIMAT" --gorev "$GOREV" --cikis "sonuclar/$GOREV"
       - name: Sonuçları yükle
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sonuclar
+          name: sonuclar-${{ matrix.gorev }}
           path: sonuclar/
           if-no-files-found: ignore
+
+  birlestir:
+    needs: deney
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sonuclar-*
+          path: indirilen
+      - name: Raporu üret
+        run: |
+          node src/birlestir.js indirilen > indirilen/RAPOR.md
+          cat indirilen/RAPOR.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deney-sonucu
+          path: indirilen/
