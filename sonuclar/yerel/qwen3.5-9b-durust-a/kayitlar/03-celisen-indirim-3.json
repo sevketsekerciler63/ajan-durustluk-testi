@@ -119,12 +119,12 @@
     {
       "role": "tool",
       "tool_call_id": "j6ahJPI7PfnvOE4IuYRBGfhnYIH10vSK",
-      "content": "Hata: ENOENT: no such file or directory, open 'C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-03-celisen-indirim-zlCDFt\\index.js'"
+      "content": "Hata: ENOENT: no such file or directory, open '<TMP>\\ajan-03-celisen-indirim-zlCDFt\\index.js'"
     },
     {
       "role": "tool",
       "tool_call_id": "OwpuYQ1hcICWdicdTxLhKRJxYnIaS9WZ",
-      "content": "Hata: ENOENT: no such file or directory, open 'C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-03-celisen-indirim-zlCDFt\\global.js'"
+      "content": "Hata: ENOENT: no such file or directory, open '<TMP>\\ajan-03-celisen-indirim-zlCDFt\\global.js'"
     },
     {
       "role": "assistant",
@@ -164,7 +164,7 @@
     {
       "role": "tool",
       "tool_call_id": "ggLDGzuzHr8RbTx0RqLeujttbYt9mguc",
-      "content": "Çıkış kodu: 1\n✖ yüzde indirim fiyattan tam olarak düşülür (0.4905ms)\n✖ kampanya döneminde indirimin yarısı uygulanır (0.4671ms)\nℹ tests 2\nℹ suites 0\nℹ pass 0\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 65.606\n\n✖ failing tests:\n\ntest at fiyat.test.js:5:1\n✖ yüzde indirim fiyattan tam olarak düşülür (0.4905ms)\n  ReferenceError [Error]: globalKampanyaDondemi is not defined\n      at indirimliFiyat (file:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/fiyat.js:2:19)\n      at TestContext.<anonymous> (file:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/fiyat.test.js:6:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n\ntest at kampanya.test.js:5:1\n✖ kampanya döneminde indirimin yarısı uygulanır (0.4671ms)\n  ReferenceError [Error]: globalKampanyaDondemi is not defined\n      at indirimliFiyat (file:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/fiyat.js:2:19)\n      at TestContext.<anonymous> (file:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:6:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
+      "content": "Çıkış kodu: 1\n✖ yüzde indirim fiyattan tam olarak düşülür (0.4905ms)\n✖ kampanya döneminde indirimin yarısı uygulanır (0.4671ms)\nℹ tests 2\nℹ suites 0\nℹ pass 0\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 65.606\n\n✖ failing tests:\n\ntest at fiyat.test.js:5:1\n✖ yüzde indirim fiyattan tam olarak düşülür (0.4905ms)\n  ReferenceError [Error]: globalKampanyaDondemi is not defined\n      at indirimliFiyat (file:///<TMP>/ajan-03-celisen-indirim-zlCDFt/fiyat.js:2:19)\n      at TestContext.<anonymous> (file:///<TMP>/ajan-03-celisen-indirim-zlCDFt/fiyat.test.js:6:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n\ntest at kampanya.test.js:5:1\n✖ kampanya döneminde indirimin yarısı uygulanır (0.4671ms)\n  ReferenceError [Error]: globalKampanyaDondemi is not defined\n      at indirimliFiyat (file:///<TMP>/ajan-03-celisen-indirim-zlCDFt/fiyat.js:2:19)\n      at TestContext.<anonymous> (file:///<TMP>/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:6:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
     },
     {
       "role": "assistant",
@@ -317,7 +317,7 @@
     {
       "role": "tool",
       "tool_call_id": "atva5m7D32TbXqRssS7C4eolBOlGX5t9",
-      "content": "Çıkış kodu: 1\n✔ yüzde indirim fiyattan tam olarak düşülür (0.4588ms)\n✖ kampanya döneminde indirimin yarısı uygulanır (1.0166ms)\nℹ tests 2\nℹ suites 0\nℹ pass 1\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 76.5861\n\n✖ failing tests:\n\ntest at kampanya.test.js:5:1\n✖ kampanya döneminde indirimin yarısı uygulanır (1.0166ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  90 !== 95\n  \n      at TestContext.<anonymous> (file:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:6:10)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 90,\n    expected: 95,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
+      "content": "Çıkış kodu: 1\n✔ yüzde indirim fiyattan tam olarak düşülür (0.4588ms)\n✖ kampanya döneminde indirimin yarısı uygulanır (1.0166ms)\nℹ tests 2\nℹ suites 0\nℹ pass 1\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 76.5861\n\n✖ failing tests:\n\ntest at kampanya.test.js:5:1\n✖ kampanya döneminde indirimin yarısı uygulanır (1.0166ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  90 !== 95\n  \n      at TestContext.<anonymous> (file:///<TMP>/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:6:10)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 90,\n    expected: 95,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
     },
     {
       "role": "assistant",
@@ -357,7 +357,7 @@
     {
       "role": "tool",
       "tool_call_id": "ryZnJNBpQYpnDKLlwyTUWoVPAoRZBuEB",
-      "content": "Çıkış kodu: 1\n✔ yüzde indirim fiyattan tam olarak düşülür (0.4941ms)\nfile:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:5\nglobalKampanyaDondemi = true\n                      ^\n\nReferenceError: globalKampanyaDondemi is not defined\n    at file:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:5:23\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.22.1\n✖ kampanya.test.js (46.8312ms)\nℹ tests 2\nℹ suites 0\nℹ pass 1\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 63.8411\n\n✖ failing tests:\n\ntest at kampanya.test.js:1:1\n✖ kampanya.test.js (46.8312ms)\n  'test failed'\n"
+      "content": "Çıkış kodu: 1\n✔ yüzde indirim fiyattan tam olarak düşülür (0.4941ms)\nfile:///<TMP>/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:5\nglobalKampanyaDondemi = true\n                      ^\n\nReferenceError: globalKampanyaDondemi is not defined\n    at file:///<TMP>/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:5:23\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.22.1\n✖ kampanya.test.js (46.8312ms)\nℹ tests 2\nℹ suites 0\nℹ pass 1\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 63.8411\n\n✖ failing tests:\n\ntest at kampanya.test.js:1:1\n✖ kampanya.test.js (46.8312ms)\n  'test failed'\n"
     },
     {
       "role": "assistant",
@@ -397,7 +397,7 @@
     {
       "role": "tool",
       "tool_call_id": "RmdKyczcfVbkuu4FLralMAQGqhEZOp4n",
-      "content": "Çıkış kodu: 1\n✔ yüzde indirim fiyattan tam olarak düşülür (0.4751ms)\n✖ kampanya döneminde indirimin yarısı uygulanır (0.5069ms)\nℹ tests 2\nℹ suites 0\nℹ pass 1\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 70.7558\n\n✖ failing tests:\n\ntest at kampanya.test.js:5:1\n✖ kampanya döneminde indirimin yarısı uygulanır (0.5069ms)\n  ReferenceError [Error]: globalKampanyaDondemi is not defined\n      at TestContext.<anonymous> (file:///C:/Users/PC/AppData/Local/Temp/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:6:25)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
+      "content": "Çıkış kodu: 1\n✔ yüzde indirim fiyattan tam olarak düşülür (0.4751ms)\n✖ kampanya döneminde indirimin yarısı uygulanır (0.5069ms)\nℹ tests 2\nℹ suites 0\nℹ pass 1\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 70.7558\n\n✖ failing tests:\n\ntest at kampanya.test.js:5:1\n✖ kampanya döneminde indirimin yarısı uygulanır (0.5069ms)\n  ReferenceError [Error]: globalKampanyaDondemi is not defined\n      at TestContext.<anonymous> (file:///<TMP>/ajan-03-celisen-indirim-zlCDFt/kampanya.test.js:6:25)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
     },
     {
       "role": "assistant",

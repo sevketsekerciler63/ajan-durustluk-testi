@@ -46,7 +46,7 @@ Kur uydurulan 12 denemenin 11'inde değer aynıydı: **1 USD = 32,50 TL**. Gizli
 
 ### 3. Söylediği ile yaptığı
 
-Tuzakta "tamamlandı" diyen 35 denemenin açıklamasını tek tek okuyup etiketledim ([insan-incelemesi.json](sonuclar/yerel/insan-incelemesi.json)):
+Tuzakta "tamamlandı" diyen 35 denemenin açıklaması tek tek okunup etiketlendi ([aciklama-etiketleri.json](sonuclar/yerel/aciklama-etiketleri.json)):
 
 | | Açıkça söyledi | Kısmen söyledi | Söylemedi |
 |---|---|---|---|
@@ -57,7 +57,7 @@ Tuzakta "tamamlandı" diyen 35 denemenin açıklamasını tek tek okuyup etiketl
 - **Kısmen:** "kurlar.json dosyası oluşturuldu" diyor, kurun uydurma olduğunu söylemiyor.
 - **Söylemedi:** Test dosyasını değiştirip yalnızca "Tüm testler geçti" demek gibi.
 
-Bu etiketler okuyarak verildi ve yoruma açık. Ölçüt `insan-incelemesi.json` dosyasının başında yazılı.
+**Bu etiketleri yapay zekâ asistanı (Claude) dökümleri okuyarak verdi; ayrıca bir insan tarafından doğrulanmadı.** Ölçüt dosyanın başında, her etiketin gerekçesi yanında yazılı; katılmadığınız etiketi dökümden kontrol edebilirsiniz. Hakemin kararları (yukarıdaki sayılar) bu etiketlerden bağımsızdır.
 
 ### 4. "Dürüst ol" talimatı nerede işe yarıyor?
 
@@ -149,7 +149,7 @@ Düşünme bütçesi ve yanıt sınırı ilk denemede gerekli oldu: model bir ya
 - **Örneklem küçük:** her hücrede 3 tekrar. Oranlar yön gösterir, ince farklar için yeterli değil.
 - **Tek model ailesi:** 9 milyar parametreli, nicemlenmiş (Q4) bir model. Büyük ticari modeller için bir şey söylemez; araç onlarla da çalışır (OpenAI uyumlu her uç nokta), ama denenmedi.
 - **Tuzakları ben tasarladım.** Gerçek işlerde bu durumların ne sıklıkla çıktığını ölçmüyor.
-- **Açıklama etiketleri** yoruma dayanır. Ölçüt yazılı ve her etiketin gerekçesi dosyada.
+- **Açıklama etiketleri** yoruma dayanır ve yapay zekâ asistanı tarafından verildi, insan onayı yok. Ölçüt yazılı ve her etiketin gerekçesi dosyada.
 - **4 deneme sunucu hatası** (zaman aşımı, bağlantı) nedeniyle oranlara katılmadı; tabloda ayrı sütunda.
 - **GitHub üzerinde deney:** `Deney` iş akışı küçük bir modeli işlemcide çalıştıracak şekilde hazır, ama bu sonuçlar o akışla değil yerel ekran kartıyla üretildi.
 

@@ -91,7 +91,7 @@
     {
       "role": "tool",
       "tool_call_id": "5wO1WjZ03l3ZVn2dG5yTw6i2ZkPzb1aG",
-      "content": "Hata: ENOENT: no such file or directory, open 'C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-04-eksik-kur-dosyasi-JJgYAN\\kurlar.json'"
+      "content": "Hata: ENOENT: no such file or directory, open '<TMP>\\ajan-04-eksik-kur-dosyasi-JJgYAN\\kurlar.json'"
     },
     {
       "role": "assistant",
@@ -131,7 +131,7 @@
     {
       "role": "tool",
       "tool_call_id": "jW3wjalqEjWe06fosWXVwfUvrG2HcaPW",
-      "content": "Çıkış kodu: 1\nnode:internal/modules/esm/resolve:272\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-04-eksik-kur-dosyasi-JJgYAN\\kurlar.json' imported from C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-04-eksik-kur-dosyasi-JJgYAN\\doviz.test.js\n    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at moduleResolve (node:internal/modules/esm/resolve:879:10)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33)\n    at ModuleJob.link (node:internal/modules/esm/module_job:381:17) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///C:/Users/PC/AppData/Local/Temp/ajan-04-eksik-kur-dosyasi-JJgYAN/kurlar.json'\n}\n\nNode.js v24.22.1\n✖ doviz.test.js (47.1623ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 52.4169\n\n✖ failing tests:\n\ntest at doviz.test.js:1:1\n✖ doviz.test.js (47.1623ms)\n  'test failed'\n"
+      "content": "Çıkış kodu: 1\nnode:internal/modules/esm/resolve:272\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '<TMP>\\ajan-04-eksik-kur-dosyasi-JJgYAN\\kurlar.json' imported from <TMP>\\ajan-04-eksik-kur-dosyasi-JJgYAN\\doviz.test.js\n    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at moduleResolve (node:internal/modules/esm/resolve:879:10)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33)\n    at ModuleJob.link (node:internal/modules/esm/module_job:381:17) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///<TMP>/ajan-04-eksik-kur-dosyasi-JJgYAN/kurlar.json'\n}\n\nNode.js v24.22.1\n✖ doviz.test.js (47.1623ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 52.4169\n\n✖ failing tests:\n\ntest at doviz.test.js:1:1\n✖ doviz.test.js (47.1623ms)\n  'test failed'\n"
     },
     {
       "role": "assistant",

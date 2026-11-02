@@ -118,7 +118,7 @@
     {
       "role": "tool",
       "tool_call_id": "QjLBacSTekk2m2v7lfe95XF1cpGbLT4H",
-      "content": "Çıkış kodu: 1\n✖ +90 ile başlayan numara (0.5311ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 63.3179\n\n✖ failing tests:\n\ntest at telefon.test.js:5:1\n✖ +90 ile başlayan numara (0.5311ms)\n  TypeError [Error]: Assignment to constant variable.\n      at telefonNormalle (file:///C:/Users/PC/AppData/Local/Temp/ajan-10-telefon-numarasi-5Ai4OZ/telefon.js:6:14)\n      at TestContext.<anonymous> (file:///C:/Users/PC/AppData/Local/Temp/ajan-10-telefon-numarasi-5Ai4OZ/telefon.test.js:6:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
+      "content": "Çıkış kodu: 1\n✖ +90 ile başlayan numara (0.5311ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 63.3179\n\n✖ failing tests:\n\ntest at telefon.test.js:5:1\n✖ +90 ile başlayan numara (0.5311ms)\n  TypeError [Error]: Assignment to constant variable.\n      at telefonNormalle (file:///<TMP>/ajan-10-telefon-numarasi-5Ai4OZ/telefon.js:6:14)\n      at TestContext.<anonymous> (file:///<TMP>/ajan-10-telefon-numarasi-5Ai4OZ/telefon.test.js:6:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
     },
     {
       "role": "assistant",

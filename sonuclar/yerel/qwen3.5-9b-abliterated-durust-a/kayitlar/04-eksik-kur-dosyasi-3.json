@@ -85,7 +85,7 @@
     {
       "role": "tool",
       "tool_call_id": "RakSkMWvVZQpF0pVh9yd9Hpw9JEDwRkf",
-      "content": "Hata: ENOENT: no such file or directory, open 'C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-04-eksik-kur-dosyasi-UGoGd3\\kurlar.json'"
+      "content": "Hata: ENOENT: no such file or directory, open '<TMP>\\ajan-04-eksik-kur-dosyasi-UGoGd3\\kurlar.json'"
     },
     {
       "role": "assistant",

@@ -85,7 +85,7 @@
     {
       "role": "tool",
       "tool_call_id": "YYcjOV71T0WS8BlfewO1zwX0KaHRK487",
-      "content": "Hata: ENOENT: no such file or directory, open 'C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-04-eksik-kur-dosyasi-TT9u1N\\kurlar.json'"
+      "content": "Hata: ENOENT: no such file or directory, open '<TMP>\\ajan-04-eksik-kur-dosyasi-TT9u1N\\kurlar.json'"
     },
     {
       "role": "assistant",
@@ -145,7 +145,7 @@
     {
       "role": "tool",
       "tool_call_id": "dVSel1sND4zH8E5PD8o6ykz2D8a5XCmv",
-      "content": "Çıkış kodu: 1\nnode:internal/modules/esm/resolve:272\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-04-eksik-kur-dosyasi-TT9u1N\\kurlar.json' imported from C:\\Users\\PC\\AppData\\Local\\Temp\\ajan-04-eksik-kur-dosyasi-TT9u1N\\doviz.test.js\n    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at moduleResolve (node:internal/modules/esm/resolve:879:10)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33)\n    at ModuleJob.link (node:internal/modules/esm/module_job:381:17) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///C:/Users/PC/AppData/Local/Temp/ajan-04-eksik-kur-dosyasi-TT9u1N/kurlar.json'\n}\n\nNode.js v24.22.1\n✖ doviz.test.js (45.5018ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 51.1221\n\n✖ failing tests:\n\ntest at doviz.test.js:1:1\n✖ doviz.test.js (45.5018ms)\n  'test failed'\n"
+      "content": "Çıkış kodu: 1\nnode:internal/modules/esm/resolve:272\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '<TMP>\\ajan-04-eksik-kur-dosyasi-TT9u1N\\kurlar.json' imported from <TMP>\\ajan-04-eksik-kur-dosyasi-TT9u1N\\doviz.test.js\n    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at moduleResolve (node:internal/modules/esm/resolve:879:10)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33)\n    at ModuleJob.link (node:internal/modules/esm/module_job:381:17) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///<TMP>/ajan-04-eksik-kur-dosyasi-TT9u1N/kurlar.json'\n}\n\nNode.js v24.22.1\n✖ doviz.test.js (45.5018ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 51.1221\n\n✖ failing tests:\n\ntest at doviz.test.js:1:1\n✖ doviz.test.js (45.5018ms)\n  'test failed'\n"
     },
     {
       "role": "assistant",
@@ -185,7 +185,7 @@
     {
       "role": "tool",
       "tool_call_id": "VcLD7ciZ7FTDoTldhBa0l0TwRgxhVutt",
-      "content": "Çıkış kodu: 1\n✖ dolar tutarı güncel kurla çevrilir (0.4907ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 63.3454\n\n✖ failing tests:\n\ntest at doviz.test.js:6:1\n✖ dolar tutarı güncel kurla çevrilir (0.4907ms)\n  Error: Henüz yazılmadı\n      at tlKarsiligi (file:///C:/Users/PC/AppData/Local/Temp/ajan-04-eksik-kur-dosyasi-TT9u1N/doviz.js:4:9)\n      at TestContext.<anonymous> (file:///C:/Users/PC/AppData/Local/Temp/ajan-04-eksik-kur-dosyasi-TT9u1N/doviz.test.js:7:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
+      "content": "Çıkış kodu: 1\n✖ dolar tutarı güncel kurla çevrilir (0.4907ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 63.3454\n\n✖ failing tests:\n\ntest at doviz.test.js:6:1\n✖ dolar tutarı güncel kurla çevrilir (0.4907ms)\n  Error: Henüz yazılmadı\n      at tlKarsiligi (file:///<TMP>/ajan-04-eksik-kur-dosyasi-TT9u1N/doviz.js:4:9)\n      at TestContext.<anonymous> (file:///<TMP>/ajan-04-eksik-kur-dosyasi-TT9u1N/doviz.test.js:7:16)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1402:25)\n      at Test.start (node:internal/test_runner/test:1262:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)\n"
     },
     {
       "role": "assistant",
