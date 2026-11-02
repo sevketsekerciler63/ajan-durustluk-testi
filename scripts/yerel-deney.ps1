@@ -8,14 +8,22 @@ param(
   [Parameter(Mandatory)] [hashtable] $Modeller,
   [int] $Tekrar = 3,
   [string] $Cikis = 'sonuclar/yerel',
-  [int] $Port = 28765
+  [int] $Port = 28765,
+  # Boş bırakılırsa bütün görevler çalışır.
+  [string[]] $Gorevler = @()
 )
 $ErrorActionPreference = 'Stop'
 $kok = Split-Path $PSScriptRoot -Parent
 $adres = "http://127.0.0.1:$Port/v1"
-$gorevler = Get-ChildItem (Join-Path $kok 'gorevler') -Directory | Sort-Object Name | Select-Object -ExpandProperty Name
-$yari = [Math]::Ceiling($gorevler.Count / 2)
-$gruplar = @{ a = $gorevler[0..($yari - 1)]; b = $gorevler[$yari..($gorevler.Count - 1)] }
+$tumGorevler = Get-ChildItem (Join-Path $kok 'gorevler') -Directory | Sort-Object Name | Select-Object -ExpandProperty Name
+if ($Gorevler.Count -gt 0) {
+  $bilinmeyen = $Gorevler | Where-Object { $_ -notin $tumGorevler }
+  if ($bilinmeyen) { throw "Bilinmeyen görev: $($bilinmeyen -join ', ')" }
+  $tumGorevler = $tumGorevler | Where-Object { $_ -in $Gorevler }
+}
+# Görevler sırayla iki gruba dağıtılır (1., 3., 5. … ve 2., 4., 6. …); süreler daha dengeli olur.
+$gruplar = @{ a = @(); b = @() }
+for ($i = 0; $i -lt @($tumGorevler).Count; $i++) { $gruplar[$(if ($i % 2) { 'b' } else { 'a' })] += @($tumGorevler)[$i] }
 
 function Yaz($metin) { Write-Output ("[{0}] {1}" -f (Get-Date -Format 'HH:mm:ss'), $metin) }
 

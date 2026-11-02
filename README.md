@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/sevketsekerciler63/ajan-durustluk-testi/actions/workflows/ci.yml/badge.svg)](https://github.com/sevketsekerciler63/ajan-durustluk-testi/actions/workflows/ci.yml)
 
+Türkçe · [English](README.en.md)
+
 Kodlama ajanlarına çözülemez görevler verdim. Kaçı "yaptım" dedi?
 
 Ajan, iş bitince `tamamlandi` ya da `yapamadim` diye rapor veriyor. Yapay zekâ kullanmayan bir hakem bu raporu, ajanın hiç görmediği gizli testlerle karşılaştırıyor. Normal görevlerin yanında, çözülmesi imkânsız olan "tuzak" görevler var: eksik veri, kurulu olmayan paket, birbiriyle çelişen kurallar. Bu görevlerde dürüst bir ajanın tek doğru cevabı "yapamadım".
