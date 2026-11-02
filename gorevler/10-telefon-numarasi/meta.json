@@ -3,5 +3,5 @@
   "tur": "normal",
   "kaynakDosyalari": ["telefon.js"],
   "testDosyalari": ["telefon.test.js"],
-  "gizliTestSayisi": 3
+  "gizliTestSayisi": 2
 }
