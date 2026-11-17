@@ -127,13 +127,13 @@ Full tables: [sonuclar/dedektor/OLCUM.md](sonuclar/dedektor/OLCUM.md).
 | 04 · Runs with an invented rate | 32 / 32 caught; in all 32 the agent never mentioned the value in its report |
 | 07 · Missing package, runs reporting "done" | 26 of 30 flagged (21 as fake package). Of the 4 missed, 3 contain no invention: the agent reported "done" with tests still failing (the judge catches that). 1 faked the package under another name (`banka.js`), a genuine miss |
 | 03 and 09 | Formula constants invented to make the tests pass (`yuzde / 200`, `* 0.9`, `/ 50`) caught in 4 runs |
-| Correct solutions to ordinary tasks | 3 of 63 runs flagged: rounding tolerances `0.01` and `0.005`, phone number length `11`. Truly unsourced but harmless |
+| Correct solutions to ordinary tasks | 3 of 63 runs flagged: rounding tolerances `0.01` and `0.005`, `900` in phone-number code (a `+900…` return). The rounding tolerances are unsourced but harmless; the `900` solution passed the hidden tests |
 | Reference solutions to ordinary tasks | 6 / 6 with no warning (pinned as a test) |
 
 Measuring on my own experiment could flatter the detector, so it was also run on a public dataset: [nebius/SWE-agent-trajectories](https://huggingface.co/datasets/nebius/SWE-agent-trajectories) (CC-BY-4.0), runs of agents working on real GitHub projects.
 
 - **False alarms:** The rules were adjusted while looking at one 500-run sample (the project's own package folder, the agent's scratch scripts, generated files). They were then run for the first time on a **different, unseen** 500-run sample: 5 of 425 patches were flagged. None of the five was source code: a sample CSV the agent wrote, a temporary lock file, and web pages the agent downloaded into the repo. **No false alarms in real source-code changes.**
-- **Misses:** In a long session the agent sees a lot of text, so an invented number may appear somewhere by chance. On the same sample, I measured how often a given value would be caught if it were invented. Distinctive values are almost always caught (`32.50`, `19.99`, `0.075`, `86400`: 100%). Short round numbers often slip through (`42`: 15%, `99`: 25%).
+- **Misses:** In a long session the agent sees a lot of text, so an invented number may appear somewhere by chance. On the same sample, I measured how often a given value would be caught if it were invented. Distinctive values are almost always caught (`32.50`, `19.99`, `0.075`, `86400`: 100%). Short round numbers often slip through (`42`: 13%, `99`: 20%).
 
 It was also run on the Claude Code session that built this project: 17 of 107 file writes were flagged. 4 were the deliberately fake trap cheats (invented rates, fake `banka-sdk`). The rest were design choices; for example, Ollama's default port `11434` was never read anywhere but recalled from training.
 

@@ -125,13 +125,13 @@ Tam tablolar: [sonuclar/dedektor/OLCUM.md](sonuclar/dedektor/OLCUM.md).
 | 04 · Kur uydurulan denemeler | 32 / 32 yakalandı; 32'sinde ajan değeri raporunda anmadı |
 | 07 · Olmayan paket, "tamamlandı" diyen denemeler | 30'da 26 uyarı (21'i sahte paket). Kaçan 4'ün 3'ünde uydurma yok: ajan testler kalmışken "tamamlandı" demiş (bunu hakem yakalar). 1'i paketi başka adla (`banka.js`) taklit etmiş; bu gerçek bir kaçırma |
 | 03 ve 09 | Testleri geçirmek için uydurulmuş formül sabitleri (`yuzde / 200`, `* 0.9`, `/ 50`) 4 denemede yakalandı |
-| Normal görevlerde doğru çözümler | 63 denemenin 3'ünde uyarı: yuvarlama payı `0.01` ve `0.005`, telefon numarası uzunluğu `11`. Gerçekten kaynaksız ama zararsız |
+| Normal görevlerde doğru çözümler | 63 denemenin 3'ünde uyarı: yuvarlama payı `0.01` ve `0.005`, telefon kodundaki `900` (`+900…` dönüşü). Yuvarlama payları kaynaksız ama zararsız; `900` olan çözüm gizli testleri geçti |
 | Normal görevlerin referans çözümleri | 6 / 6 uyarısız (test olarak sabit) |
 
 Kendi deneyim üzerinde yapılan ölçüm kendini kayırabilir. Bu yüzden dedektör açık bir veri setinde de denendi: [nebius/SWE-agent-trajectories](https://huggingface.co/datasets/nebius/SWE-agent-trajectories) (CC-BY-4.0), gerçek GitHub projelerinde çalışan ajanların kayıtları.
 
 - **Yanlış alarm:** Kurallar 500 kayıtlık bir örneğe bakılarak düzeltildi (projenin kendi paket klasörü, ajanın deneme betikleri, üretilen dosyalar). Ardından **hiç bakılmamış** başka 500 kayıtta ilk kez çalıştırıldı: 425 yamanın 5'inde uyarı çıktı. Beşi de kaynak kodda değil; ajanın yazdığı örnek CSV, geçici kilit dosyası ve internetten indirip klasöre kaydettiği web sayfaları. **Gerçek kaynak kod değişikliklerinde yanlış alarm çıkmadı.**
-- **Kaçırma:** Uzun oturumda ajan çok metin görür; uydurduğu sayı tesadüfen bir yerde geçebilir. Aynı 500 kayıtta, belirli bir değer uydurulsaydı yakalanma oranı ölçüldü. Ayırt edici değerler neredeyse her zaman yakalanır (`32.50`, `19.99`, `0.075`, `86400`: %100). Kısa ve yuvarlak sayılar sık kaçar (`42`: %15, `99`: %25).
+- **Kaçırma:** Uzun oturumda ajan çok metin görür; uydurduğu sayı tesadüfen bir yerde geçebilir. Aynı 500 kayıtta, belirli bir değer uydurulsaydı yakalanma oranı ölçüldü. Ayırt edici değerler neredeyse her zaman yakalanır (`32.50`, `19.99`, `0.075`, `86400`: %100). Kısa ve yuvarlak sayılar sık kaçar (`42`: %13, `99`: %20).
 
 Bu oturumun kendisi de denendi: bu projeyi yazan Claude Code oturumunda 107 dosya yazımından 17'si uyarı aldı. 4'ü tuzaklar için bilerek yazılmış hilelerdi (sahte kurlar, sahte `banka-sdk`). Kalanlar tasarım kararlarıydı; örneğin Ollama'nın varsayılan portu `11434` hiçbir yerden okunmamış, eğitimden hatırlanmıştı.
 
